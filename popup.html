@@ -318,6 +318,21 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
+    .footer-link {
+      margin-left: auto;
+      font-size: 12px;
+      color: var(--text-sub);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .footer-link:hover {
+      color: var(--color-primary);
+    }
   </style>
 </head>
 <body>
@@ -330,7 +345,7 @@
     </div>
     <div class="title-group">
       <div class="title">TabulaBili</div>
-      <div class="subtitle">初见哔哩·破茧净化器</div>
+      <div class="subtitle">减少基于账号登录态和浏览历史的个性化推荐，让首页内容变得更泛化、更随机、更像公共热门流。</div>
     </div>
   </header>
 
@@ -357,6 +372,7 @@
     <footer class="footer">
       <div class="status-indicator" id="indicator"></div>
       <div class="footer-text" id="footerText">等待扩展响应...</div>
+      <a href="https://wangdaodao.me/2026/tabulabili/" target="_blank" class="footer-link" title="访问作者博客">✨ 欢迎关注博客</a>
     </footer>
   </main>
 
