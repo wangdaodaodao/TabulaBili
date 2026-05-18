@@ -56,9 +56,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       // 3. 检测当前是否在 B 站页面，自动刷新
       const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
-      if (tabs.length > 0 && tabs[0].url && tabs[0].url.includes('bilibili.com')) {
-        footerText.textContent = '已自动刷新当前 B 站页面生效';
-        chrome.tabs.reload(tabs[0].id);
+      if (tabs.length > 0 && tabs[0].url) {
+        try {
+          const tabUrl = new URL(tabs[0].url);
+          if (tabUrl.hostname === 'bilibili.com' || tabUrl.hostname.endsWith('.bilibili.com')) {
+            footerText.textContent = '已自动刷新当前 B 站页面生效';
+            chrome.tabs.reload(tabs[0].id);
+          } else {
+            footerText.textContent = '切换成功，打开或刷新 B 站首页生效';
+          }
+        } catch (urlError) {
+          footerText.textContent = '切换成功，打开或刷新 B 站首页生效';
+        }
       } else {
         footerText.textContent = '切换成功，打开或刷新 B 站首页生效';
       }
