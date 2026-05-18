@@ -90,8 +90,26 @@ purebili/
 ```
 
 ---
+
+## 📄 开源与许可声明 (License & Open Source)
+
+本项目采用 **MIT 开源许可证 (MIT License)**。
+
+没有上架应用商店的计划，如果有这个行为，最好能保留博客信息。
+
+我们秉持极度开放与自由的开源精神：
+* **自由开发与分发**：任何人都可以自由地获取源码、修改功能逻辑、定制 UI 界面，甚至打包分发或用于商业项目（**其他的可以随便开发**）。
+* **署名要求**：仅需在二次开发或分发时保留原作者版权及许可声明。
+* **免责声明**：本扩展按原样提供，作者不对任何因使用或修改本扩展产生的意外损失或账号问题承担连带责任。
+
+---
+
+## 🌐 联系与关注作者
+
+* **Blog**: [wangdaodao.me](https://wangdaodao.me)
+* **项目介绍**: [TabulaBili - 初见哔哩](https://wangdaodao.me/2026/tabulabili/)
+* **Twitter / X**: [@goodwdd](https://twitter.com/goodwdd)
+* **GitHub**: [wangdaodaodao](https://github.com/wangdaodaodao)
+
+---
 **Author**: wangdaodao | **Version**: 1.0 | **License**: MIT
-
-
-介绍：
-https://wangdaodao.me/2026/tabulabili/

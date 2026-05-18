@@ -5,7 +5,6 @@
   "author": "wangdaodao",
   "description": "减少基于账号登录态和浏览历史的个性化推荐，让首页内容变得更泛化、更随机、更像公共热门流。",
   "permissions": [
-    "declarativeNetRequest",
     "declarativeNetRequestWithHostAccess",
     "activeTab"
   ],
