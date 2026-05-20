@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TabulaBili-Plus (初见哔哩增强版)",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "tjsky",
   "description": "通过减少基于账号登录态和浏览历史的个性化推荐，让B站首页内容变得更泛化、更随机、更像公共热门流。",
   "permissions": [
