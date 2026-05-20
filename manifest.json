@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "TabulaBili (初见哔哩)",
-  "version": "1.0",
-  "author": "wangdaodao",
-  "description": "减少基于账号登录态和浏览历史的个性化推荐，让首页内容变得更泛化、更随机、更像公共热门流。",
+  "name": "TabulaBili-Plus (初见哔哩增强版)",
+  "version": "1.0.0",
+  "author": "tjsky",
+  "description": "通过减少基于账号登录态和浏览历史的个性化推荐，让B站首页内容变得更泛化、更随机、更像公共热门流。",
   "permissions": [
     "declarativeNetRequestWithHostAccess",
     "activeTab"
@@ -19,7 +19,7 @@
   },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "TabulaBili 推荐设置",
+    "default_title": "TabulaBili-Plus 推荐设置",
     "default_icon": {
       "16": "icon16.png",
       "32": "icon32.png",

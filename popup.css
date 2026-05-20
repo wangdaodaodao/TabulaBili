@@ -1,0 +1,324 @@
+/* ==========================================
+   1. Design Tokens & Themes
+   ========================================== */
+:root {
+
+  --color-primary: #10b981;
+  --color-primary-gradient: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  --color-primary-shadow: rgba(16, 185, 129, 0.3);
+  
+  /* Light Theme */
+  --bg-base: #f8fafc;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-header: rgba(248, 250, 252, 0.8);
+  --border-color: rgba(226, 232, 240, 0.8);
+  --border-card: rgba(255, 255, 255, 0.7);
+  
+  --text-main: #0f172a;
+  --text-sub: #64748b;
+  --text-muted: #94a3b8;
+  
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-card: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  
+  /* Switch Light */
+  --switch-bg-off: #cbd5e1;
+  --switch-knob: #ffffff;
+  
+  /* Status */
+  --status-active: #10b981;
+  --status-inactive: #64748b;
+  
+  /* Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.26, 1.55);
+}
+
+/* Dark Theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-base: #0b0f19;
+    --bg-card: rgba(25, 33, 50, 0.65);
+    --bg-header: rgba(11, 15, 25, 0.8);
+    --border-color: rgba(30, 41, 59, 0.8);
+    --border-card: rgba(255, 255, 255, 0.06);
+    
+    --text-main: #f8fafc;
+    --text-sub: #94a3b8;
+    --text-muted: #64748b;
+    
+    --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    
+    --switch-bg-off: #334155;
+  }
+}
+
+/* ==========================================
+   2. Global Reset & Base
+   ========================================== */
+body {
+  width: 320px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ==========================================
+   3. Header 
+   ========================================== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--bg-header);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logo-container {
+  margin-right: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: var(--transition-bounce);
+}
+
+.logo-img:hover {
+  transform: scale(1.06) rotate(-3deg);
+}
+
+.title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: var(--text-sub);
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+/* ==========================================
+   4. Main Content & Cards
+   ========================================== */
+.main {
+  padding: 20px;
+}
+
+.card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-card);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-smooth);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(16, 185, 129, 0.2); 
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.label-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.label-main {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.label-badge {
+  align-self: flex-start;
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+  background: rgba(16, 185, 129, 0.1); 
+  color: var(--color-primary);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+/* ==========================================
+   5. Premium Switch (Apple/Vercel Style)
+   ========================================== */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: var(--switch-bg-off);
+  transition: var(--transition-smooth);
+  border-radius: 30px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--switch-knob);
+  transition: var(--transition-bounce);
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+input:checked + .slider {
+  background: var(--color-primary-gradient); 
+  box-shadow: 0 4px 12px var(--color-primary-shadow);
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+input:active + .slider:before {
+  width: 26px;
+}
+
+input:checked:active + .slider:before {
+  transform: translateX(20px);
+}
+
+/* ==========================================
+   6. Status Description & Footer 
+   ========================================== */
+.status-panel {
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+.status-desc {
+  font-size: 13px;
+  color: var(--text-sub);
+  line-height: 1.5;
+  min-height: 60px;
+  transition: var(--transition-smooth);
+}
+
+.footer {
+  margin-top: 20px;
+  padding: 0 4px;
+  display: flex;
+  flex-direction: column; 
+  gap: 12px; 
+}
+
+.status-wrapper {
+  display: flex;
+  align-items: flex-start; 
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.status-indicator {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--status-inactive);
+  transition: var(--transition-smooth);
+  flex-shrink: 0;
+  margin-top: 4px; 
+}
+
+.status-indicator.active {
+  background-color: var(--status-active);
+}
+
+.status-indicator.active::after {
+  content: '';
+  position: absolute;
+  top: -4px; left: -4px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background-color: var(--status-active);
+  opacity: 0.4;
+  animation: pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.5); opacity: 0.6; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+.footer-text {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  padding-top: 12px;
+  margin-top: 4px;
+  border-top: 1px dashed var(--border-color); 
+}
+
+.footer-link {
+  font-size: 12px;
+  color: var(--text-sub);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer-link:hover {
+  color: var(--status-active); 
+}
