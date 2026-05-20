@@ -60,8 +60,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
           const tabUrl = new URL(tabs[0].url);
           if (tabUrl.hostname === 'bilibili.com' || tabUrl.hostname.endsWith('.bilibili.com')) {
-            footerText.textContent = '已自动刷新当前 B 站页面生效';
-            chrome.tabs.reload(tabs[0].id);
+            footerText.textContent = 'B站首页内容刷新中...';
+            await chrome.scripting.executeScript({
+              target: { tabId: tabs[0].id },
+              func: () => {
+                const rollBtn = document.querySelector('.roll-btn');
+                if (rollBtn) {
+                  rollBtn.click();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                  location.reload();
+                }
+              }
+            });
           } else {
             footerText.textContent = '切换成功，打开或刷新 B 站首页生效';
           }
