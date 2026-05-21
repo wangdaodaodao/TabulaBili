@@ -58,18 +58,25 @@ TabulaBili-Plus 利用 Chrome 扩展 Manifest V3 的 **`declarativeNetRequest` (
 
 ## 安装与使用指南
 
-### 1. 本地安装 (开发者模式)
-1. 打开 Chrome 浏览器，在地址栏输入 `chrome://extensions/` 进入扩展管理页面。
-2. 开启页面右上角的 **“开发者模式”** (Developer mode)。
-3. 点击左上角的 **“加载已解压的扩展程序”** (Load unpacked)，选择本扩展所在的目录（即 `TabulaBili-v1.*.*` 文件夹）。
+### 1. 在线安装
+
+访问 [Chrome扩展商店](https://chromewebstore.google.com/detail/tabulabili-plus-初见哔哩增强版/pcbjbikpbpfhdfjiihnfgmphfmmeddgj?authuser=0&hl=zh-CN) 像正常的扩展那样安装就行。
+
+### 2. 本地安装 (开发者模式)
+
+1. 下载扩展：[GitHub](https://github.com/tjsky/TabulaBili/releases) | [蓝奏云](https://tjsky.lanzouq.com/iC8Ff3poxmud)
+2. 将`TabulaBili-Plus`文件夹解压到一个你喜欢的位置。
+3. 打开 Chrome 浏览器，在地址栏输入 `chrome://extensions/` 进入扩展管理页面。
+4. 开启页面右上角的 **“开发者模式”** (Developer mode)。
+5. 点击左上角的 **“加载已解压的扩展程序”** (Load unpacked)，选择本扩展所在的目录（即 `TabulaBili-v*.*.*` 文件夹）。
 
 ### 2. 使用方法
-1. 在浏览器右上角的扩展工具栏中找到 **TabulaBil-Plusi** 并将其固定（Pin）。
+1. 在浏览器右上角的扩展工具栏中找到 **TabulaBili-Plus** 并将其固定（Pin）。
 2. 点击扩展图标打开精美的设置面板：
    * **开启模式 (ACTIVE)**：开启纯净访客模式，立即屏蔽个性化推荐。
    * **关闭模式 (OFF)**：一键瞬间恢复原版 B 站个性化推荐。
 3. **智能刷新**：在切换开关时，如果扩展检测到你当前正在浏览 B 站页面，会自动帮你重载页面以让新模式立即生效。
-4. **强制刷新**：当检测到用户访问B站首页时，「换一换」按钮出现就自动点击，替换首屏的10个性化推荐视频。
+4. **强制刷新**：当检测到用户访问B站首页「换一换」按钮出现就自动点击，替换首屏的10个性化推荐视频。
 ---
 
 ## 常见问题 (FAQ)
@@ -86,6 +93,10 @@ TabulaBili-Plus 利用 Chrome 扩展 Manifest V3 的 **`declarativeNetRequest` (
 #### Q4：抹除整个 cookies 是否有什么隐患？
 目前 B 站的 Feed 接口，没有基于 Cookie 的防火墙（WAF）校验令牌，不会报错，但把 Cookie 全干掉会触及 B 站本身防火墙（WAF）对不登录访客基于 IP 的请求速率限制。所以**不要狂刷首页**，刷太快会 429 的。
 **一句未雨绸缪的提示**：虽然目前一切正常，但万一未来B站改版可能会导致你的 B 站首页异常，请尝试关闭扩展看看。
+
+#### Q5：为什么还有个性化推荐内容/为什么首页会自己刷新
+
+B站为了加快你的访问速度，首页用了一种叫 SSR 的技术，导致只要用户登录了，首页的前10个视频一定是根据个性化推荐预先选择好的，无法使用 DNR 拦截修改。为了能够替换这10个视频，Plus 版设计了一个自动刷新机制，在网页框架加载后，就马上替换掉这10个视频，正常来说这个替换过程并不会被明显感知到，但如果网络不太好载入很慢，就会看到部分视频被加载，然后被扩展替换，这是为了完全的纯净化热门流首页设计的机制。
 
 
 ---
