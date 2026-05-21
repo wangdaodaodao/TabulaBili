@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>生成商店截图 (640x400)</title>
+  <link rel="stylesheet" href="popup.css">
+  <style>
+    /* ==========================================
+       彻底消灭黑边：让 html 和 body 恰好等于 640x400
+       ========================================== */
+    html, body {
+      width: 640px !important;
+      height: 400px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: hidden !important; /* 彻底禁用滚动条 */
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+      font-family: system-ui, -apple-system, sans-serif;
+      box-sizing: border-box;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* 核心画布铺满全屏 */
+    .canvas {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 36px;
+      position: relative;
+    }
+    
+    /* 背景装饰 */
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(16,185,129,0.15) 0%, rgba(52,211,153,0.25) 100%);
+      pointer-events: none;
+    }
+    .c1 { width: 350px; height: 350px; top: -120px; left: -80px; }
+    .c2 { width: 260px; height: 260px; bottom: -80px; right: -40px; }
+    
+    /* 左侧精练文案排版 */
+    .text-wrap {
+      z-index: 2;
+      width: 210px;
+    }
+    .title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #064e3b;
+      margin: 0 0 14px 0;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+    }
+    .sub {
+      font-size: 13px;
+      color: #047857;
+      margin: 0;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    
+    /* 右侧 100% 还原的扩展面板容器 */
+    .mockup {
+      z-index: 2;
+      width: 320px;
+      height: 342px;
+      background: var(--bg-base); /* 继承自你的 popup.css */
+      border-radius: 14px;
+      box-shadow: 0 20px 40px rgba(6, 78, 59, 0.12), 0 4px 12px rgba(6, 78, 59, 0.06);
+      border: 1px solid rgba(16, 185, 129, 0.15);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="canvas">
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    
+    <div class="text-wrap">
+      <h1 class="title">TabulaBili-Plus<br>初见哔哩增强版</h1>
+      <p class="sub">告别推荐算法蚕食。<br>网络层清洗个性化痕迹，<br>一键唤醒纯净热门推荐流。</p>
+    </div>
+    
+    <div class="mockup">
+      <header class="header">
+        <div class="logo-container">
+          <img src="icon48.png" alt="Logo" class="logo-img">
+        </div>
+        <div class="title-group">
+          <div class="title">TabulaBili-Plus</div>
+          <div class="subtitle">通过减少基于账号登录态和浏览历史的个性化推荐，让B站首页内容变得更泛化、更随机。</div>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="card">
+          <div class="control-row">
+            <div class="label-group">
+              <span class="label-main">纯净访客模式</span>
+              <span class="label-badge" style="color: #10b981; background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2);">ACTIVE</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" checked disabled>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="status-panel">
+            <div class="status-desc" style="min-height: 60px;">已开启：自动剥离首页推荐 Cookie，享受纯净热门流，视频播放保持 1080P 高清体验。</div>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <div class="status-wrapper">
+            <div class="status-indicator active" style="background-color: #10b981;"></div>
+            <div class="footer-text" style="color: #10b981; font-weight: 600;">已注入规则，首页内容刷新中...</div>
+          </div>
+          <div class="footer-links">
+            <span class="footer-link">💻 项目开源</span>
+            <span class="footer-link">✨ 原作者博客</span>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+</body>
+</html>

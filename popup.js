@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     const enabledRulesets = await chrome.declarativeNetRequest.getEnabledRulesets();
     const isEnabled = enabledRulesets.includes(RULESET_ID);
+    chrome.storage.local.set({ isTabulaBiliEnabled: isEnabled });
+    
     updateUI(isEnabled);
   } catch (err) {
     statusDesc.textContent = '状态获取失败，请确保在 Chrome 扩展环境中运行。';
@@ -43,14 +45,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
       if (nextState) {
-        await chrome.declarativeNetRequest.updateEnabledRulesets({
-          enableRulesetIds: [RULESET_ID]
-        });
+        await chrome.declarativeNetRequest.updateEnabledRulesets({ enableRulesetIds: [RULESET_ID] });
       } else {
-        await chrome.declarativeNetRequest.updateEnabledRulesets({
-          disableRulesetIds: [RULESET_ID]
-        });
+        await chrome.declarativeNetRequest.updateEnabledRulesets({ disableRulesetIds: [RULESET_ID] });
       }
+      chrome.storage.local.set({ isTabulaBiliEnabled: nextState });
       
       updateUI(nextState);
 
@@ -85,7 +84,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (err) {
       statusDesc.textContent = '切换规则失败：' + err.message;
       console.error(err);
-      // 恢复原状
       modeSwitch.checked = !nextState;
     } finally {
       modeSwitch.disabled = false;
