@@ -19,7 +19,7 @@ jobs:
 
       - name: 📦 打包 Chrome 扩展 ZIP
         run: |
-          zip -r TabulaBili-${{ github.ref_name }}.zip . -x "*.git*" -x ".github/*" -x ".gitignore" -x "README.md" -x "LICENSE" -x "*.DS_Store" -x "*.pem" -x "*.crx"
+          zip -r TabulaBili-${{ github.ref_name }}.zip . -x "*.git*" -x ".github/*" -x ".gitignore" -x "README.md" -x "LICENSE" -x "*.DS_Store" -x "*.pem" -x "*.crx" -x "promo.html"
           
       - name: 🚀 发布到 GitHub Releases
         uses: softprops/action-gh-release@v2
