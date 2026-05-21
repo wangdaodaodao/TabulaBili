@@ -9,7 +9,7 @@ chrome.storage.local.get(['isTabulaBiliEnabled'], (result) => {
           rollBtn.click(); 
           window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
-          console.log('[TabulaBili] 按钮加载过慢，用户已开始浏览，放弃自动刷新以保护体验。');
+          console.log('[TabulaBili-Plus] 按钮加载过慢，用户已开始浏览，放弃自动刷新以保护体验。');
         }
         return true; 
       }

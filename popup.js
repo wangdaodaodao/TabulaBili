@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       modeBadge.style.borderColor = 'rgba(16, 185, 129, 0.2)';
       indicator.classList.add('active');
       statusDesc.textContent = '已开启：自动剥离首页推荐 Cookie，享受纯净热门流，视频播放保持 1080P 高清体验。';
+      
+      footerText.textContent = '规则运行中，时刻守护首页纯净'; 
+      footerText.style.color = 'var(--status-active)'; // 让文字也变绿
     } else {
       modeBadge.textContent = 'OFF';
       modeBadge.style.color = 'var(--text-sub)';
@@ -23,6 +26,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       modeBadge.style.borderColor = 'rgba(100, 116, 140, 0.2)';
       indicator.classList.remove('active');
       statusDesc.textContent = '已关闭：已恢复原版B站个性化推荐，将根据你的历史播放习惯展示内容。';
+      footerText.textContent = '功能已关闭，个性化推荐已恢复';
+      footerText.style.color = 'var(--text-muted)'; // 变回灰色
     }
   };
 
