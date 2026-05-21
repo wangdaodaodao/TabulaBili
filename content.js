@@ -4,14 +4,18 @@ chrome.storage.local.get(['isTabulaBiliEnabled'], (result) => {
     const tryClickRollBtn = () => {
       const rollBtn = document.querySelector('.roll-btn');
       if (rollBtn) {
-        rollBtn.click(); // 触发刷新
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // 若用户已开始浏览则禁用自动刷新
+        if (window.scrollY < 100) {
+          rollBtn.click(); 
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          console.log('[TabulaBili] 按钮加载过慢，用户已开始浏览，放弃自动刷新以保护体验。');
+        }
         return true; 
       }
       return false; 
     };
 
- 
     if (!tryClickRollBtn()) {
       const observer = new MutationObserver((mutations, obs) => {
         if (tryClickRollBtn()) {
@@ -19,11 +23,10 @@ chrome.storage.local.get(['isTabulaBiliEnabled'], (result) => {
         }
       });
       
-      // 监视 body 内的所有元素变动
       observer.observe(document.body, { childList: true, subtree: true });
       setTimeout(() => {
         observer.disconnect();
-      }, 10000);
+      }, 8000);
     }
   }
 });

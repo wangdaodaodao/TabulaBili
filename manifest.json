@@ -1,17 +1,17 @@
 {
   "manifest_version": 3,
   "name": "TabulaBili-Plus (初见哔哩增强版)",
-  "version": "1.1.2",
-  "author": "tjsky",
+  "version": "1.1.3",
+  "author": "去年夏天",
   "description": "通过减少基于账号登录态和浏览历史的个性化推荐，让B站首页内容变得更泛化、更随机、更像公共热门流。",
   "permissions": [
     "declarativeNetRequestWithHostAccess",
-    "activeTab",
     "scripting",
     "storage"
   ],
   "host_permissions": [
-    "*://api.bilibili.com/*"
+    "*://api.bilibili.com/*",
+    "*://www.bilibili.com/*"
   ],
   "icons": {
     "16": "icon16.png",
